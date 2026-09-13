@@ -1,9 +1,5 @@
 # SS07 HW05: Gateway Filters và Loan Service gọi đa service bằng FeignClient
 
-**Sinh viên:** Dang Khanh An  
-**Lớp:** IT214  
-**Mã:** PTIT070
-
 ## Mục tiêu
 
 Bài này xây dựng nghiệp vụ đăng ký khoản vay cho FinBank. `loan-service` gọi đồng bộ sang `customer-service` và `account-service` bằng OpenFeign, sau đó tạo hồ sơ vay trạng thái `PENDING`. `api-gateway` có Global Filter để log request/response, đo thời gian xử lý và thêm header `X-Response-Time`.
