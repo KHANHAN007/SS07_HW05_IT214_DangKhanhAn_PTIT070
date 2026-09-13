@@ -1,0 +1,74 @@
+{
+  "info": {
+    "name": "FinBank SS07 HW05 Loan Gateway Filters",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get customer 1",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8222/api/customers/1"
+      }
+    },
+    {
+      "name": "Get accounts of customer 1",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8222/api/accounts/customer/1"
+      }
+    },
+    {
+      "name": "TC1 Apply loan success",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerId\": 1,\n  \"amount\": 50000000,\n  \"termMonths\": 24,\n  \"purpose\": \"Vay mua xe may\"\n}"
+        },
+        "url": "http://localhost:8222/api/loans/apply"
+      }
+    },
+    {
+      "name": "TC2 Apply loan failed customer not found",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerId\": 99,\n  \"amount\": 50000000,\n  \"termMonths\": 24,\n  \"purpose\": \"Vay kinh doanh\"\n}"
+        },
+        "url": "http://localhost:8222/api/loans/apply"
+      }
+    },
+    {
+      "name": "TC3 Apply loan failed no active account",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerId\": 3,\n  \"amount\": 20000000,\n  \"termMonths\": 12,\n  \"purpose\": \"Vay tieu dung\"\n}"
+        },
+        "url": "http://localhost:8222/api/loans/apply"
+      }
+    }
+  ]
+}
+
